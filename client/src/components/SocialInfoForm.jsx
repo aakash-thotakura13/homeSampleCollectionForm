@@ -21,7 +21,7 @@ export const SocialInfoForm = ({ onSubmit, gender }) => {
 
         <SelectTag register={register} registerName="accompanySmoker" requiredStatus={true} options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }, { value: "occasional", label: "Occasional" }, { value: "stopped", label: "Stopped" }]} error={errors?.accompanySmoker} defaultText="Do you accompany a smoker?" />
 
-        <SelectTag register={register} registerName="drink" requiredStatus={true} options={[{ value: "yes_daily", label: "Yes, Daily" }, { value: "occasional", label: "Occasional" }, { value: "never", label: "Never" }]} error={errors?.drink} defaultText="Do you accompany a smoker?" />
+        <SelectTag register={register} registerName="drink" requiredStatus={true} options={[{ value: "yes_daily", label: "Yes, Daily" }, { value: "occasional", label: "Occasional" }, { value: "never", label: "Never" }]} error={errors?.drink} defaultText="Do you consume alcohol?" />
 
         <SelectTag register={register} registerName="tobacco" requiredStatus={true} options={[{ value: "yes_daily", label: "Yes, Daily" }, { value: "occasional", label: "Occasional" }, { value: "never", label: "Never" }]} error={errors?.tobacco} defaultText="Do you chew tobacco?" />
 

@@ -1,7 +1,6 @@
 // src/components/MedicalHistoryForm.jsx
-import React from "react";
 import { useForm } from "react-hook-form";
-import { ErrorMsg } from "./common/ErrorMsg";
+
 import { Heading } from "./common/Heading";
 import { SelectTag } from "./common/SelectTag";
 import { TextAreaTag } from "./common/TextareaTag";
@@ -49,16 +48,6 @@ export const MedicalHistoryForm = ({ onSubmit }) => {
         <Heading title={"Medical History"} />
 
         <SelectTag
-          label="Is Diabetes running in your immediate family?"
-          register={register}
-          registerName="familyDiabetes"
-          requiredStatus={true}
-          options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }, { value: "maybe", label: "Maybe" }]}
-          error={errors?.familyDiabetes}
-          defaultText="Please choose..."
-        />
-
-        <SelectTag
           label="Any history of surgeries in the past?"
           register={register}
           registerName="surgeryHistory"
@@ -81,7 +70,7 @@ export const MedicalHistoryForm = ({ onSubmit }) => {
         }
 
         {/* Blood Pressure: */}
-        <InputTag type={"text"} placeholder="Please mention the last known reading" register={register} registerName="glucoseReadings" requiredStatus={true} error={errors?.glucoseReadings} />
+        <InputTag type={"text"} placeholder="Blood Pressure (Please mention the last known reading)" register={register} registerName="glucoseReadings" requiredStatus={true} error={errors?.glucoseReadings} />
 
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", placeItems: "center", gap: "1em", }}>

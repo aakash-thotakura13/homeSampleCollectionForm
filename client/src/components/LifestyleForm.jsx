@@ -51,26 +51,10 @@ export const LifestyleForm = ({ onSubmit }) => {
           error={errors?.afternoonNap}
         />
 
-        <SelectTag
-          label="Has weight been a problem for you, anytime?"
-          register={register}
-          registerName={"weightIssues"}
-          requiredStatus={true}
-          defaultText="Please choose..."
-          options={[
-            { value: "yes", label: "Yes" },
-            { value: "no", label: "No" },
-            { value: "sometimes", label: "Sometimes" },
-          ]}
-          error={errors?.weightIssues}
-        />
-
         <br />
 
         <label>
           Has weight been a problem for you, anytime?
-
-          <span style={{ fontSize: "0.7rem", color: "gray" }}>(You can select multiple)</span>
 
           <div style={{ marginLeft: "0.5rem" }}>
             <CheckBoxTag label="Gaining weight" register={register} registerName="weightIssues" value="Gaining weight" />
@@ -83,14 +67,12 @@ export const LifestyleForm = ({ onSubmit }) => {
         <br />
 
         <label>
-          Has weight been a problem for you, anytime?
-
-          <span style={{ fontSize: "0.7rem", color: "gray" }}>(You can select multiple)</span>
+          How many hours do you sleep?
 
           <div style={{ marginLeft: "0.5rem" }}>
-            <CheckBoxTag label="Less than 4 hrs" register={register} registerName="weightIssues" value="less_than_four" />
-            <CheckBoxTag label="Around 4-6 hrs" register={register} registerName="weightIssues" value="four_to_six" />
-            <CheckBoxTag label="More than 6 hrs" register={register} registerName="weightIssues" value="more_than_six" />
+            <CheckBoxTag label="Less than 4 hrs" register={register} registerName="sleepPattern" value="less_than_four" />
+            <CheckBoxTag label="Around 4-6 hrs" register={register} registerName="sleepPattern" value="four_to_six" />
+            <CheckBoxTag label="More than 6 hrs" register={register} registerName="sleepPattern" value="more_than_six" />
           </div>
 
         </label>

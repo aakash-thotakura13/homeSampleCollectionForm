@@ -2,13 +2,14 @@ import { useState } from "react"
 import { GeneralInfoForm } from "./GeneralInfoForm";
 import { SocialInfoForm } from "./SocialInfoForm";
 import { FamilyHistoryForm } from "./FamilyHistoryForm";
-import { ComplaintsForm } from "./ComplaintForm";
+// import { ComplaintsForm } from "./ComplaintForm";
 import { LifestyleForm } from "./LifestyleForm";
 import { MedicalHistoryForm } from "./MedicalHistoryForm";
-import { FoodIntakeForm } from "./FoodIntakeForm";
+import { DietaryPreferencesForm } from "./DietaryPreferencesForm";
 import { Confirmation } from "./Confirmation";
 import { PersonalMedicalHistory } from "./PersonalMedicalHistoryForm";
 import { TestNCollectionInfo } from "./TestNCollectionInfo";
+import { SelectTests } from "./SelectTests";
 
 
 const MultiStepForm = () => {
@@ -32,8 +33,9 @@ const MultiStepForm = () => {
     // { component: <ComplaintsForm key="complaints" onSubmit={saveStepData} /> },
     { component: <LifestyleForm key="lifestyle" onSubmit={saveStepData} /> },
     { component: <MedicalHistoryForm key="medical" onSubmit={saveStepData} /> },
-    { component: <FoodIntakeForm key="food" onSubmit={saveStepData} /> },
+    { component: <DietaryPreferencesForm key="food" onSubmit={saveStepData} /> },
     { component: <TestNCollectionInfo key="testInfo" onSubmit={saveStepData} /> },
+    { component: <SelectTests key="selectTest" onSubmit={saveStepData} /> },
     { component: <Confirmation key="confirmation" formData={formData} /> },
   ];
 
