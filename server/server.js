@@ -20,13 +20,14 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/pdfs", express.static("pdfs"));
 
 dotenv.config();
 connectDB();
 
 const formRoutes = require("./routes/formRoutes");
 
-app.use("/api/forms", formRoutes);
+app.use("/api/form", formRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running...");
