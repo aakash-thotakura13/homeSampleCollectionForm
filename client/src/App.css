@@ -1,0 +1,43 @@
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.water-slider {
+  width: 100%;
+  appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #00db83, #018931);
+  outline: none;
+  transition: background 0.3s ease;
+  position: relative;
+  border: none;
+}
+
+.water-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 2px solid #0083b0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.water-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 2px solid #0083b0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-label {
+  font-weight: bold;
+  min-width: 40px;
+}

@@ -1,10 +1,9 @@
 
 // src/components/LifestyleForm.jsx
 import { useForm } from "react-hook-form";
-import { ErrorMsg } from "./common/ErrorMsg";
+
 import { Heading } from "./common/Heading";
 import { SelectTag } from "./common/SelectTag";
-import { CheckBoxTag } from "./common/CheckBoxTag";
 
 export const LifestyleForm = ({ onSubmit }) => {
 
@@ -51,33 +50,33 @@ export const LifestyleForm = ({ onSubmit }) => {
           error={errors?.afternoonNap}
         />
 
-        <br />
+        <SelectTag
+          label="Has weight been a problem for you, anytime?"
+          register={register}
+          registerName={"weightIssues"}
+          requiredStatus={true}
+          defaultText="Please choose..."
+          options={[
+            { value: "gaining", label: "Gaining Weight" },
+            { value: "lossing", label: "Lossing Weight" },
+            { value: "none", label: "No Issue" },
+          ]}
+          error={errors?.weightIssues}
+        />
 
-        <label>
-          Has weight been a problem for you, anytime?
-
-          <div style={{ marginLeft: "0.5rem" }}>
-            <CheckBoxTag label="Gaining weight" register={register} registerName="weightIssues" value="Gaining weight" />
-            <CheckBoxTag label="Losing weight" register={register} registerName="weightIssues" value="Losing weight" />
-            <CheckBoxTag label="No issue" register={register} registerName="weightIssues" value="No issue" />
-          </div>
-
-        </label>
-
-        <br />
-
-        <label>
-          How many hours do you sleep?
-
-          <div style={{ marginLeft: "0.5rem" }}>
-            <CheckBoxTag label="Less than 4 hrs" register={register} registerName="sleepPattern" value="less_than_four" />
-            <CheckBoxTag label="Around 4-6 hrs" register={register} registerName="sleepPattern" value="four_to_six" />
-            <CheckBoxTag label="More than 6 hrs" register={register} registerName="sleepPattern" value="more_than_six" />
-          </div>
-
-        </label>
-
-        <br />
+        <SelectTag
+          label="How many hours do you sleep?"
+          register={register}
+          registerName={"sleepPattern"}
+          requiredStatus={true}
+          defaultText="Please choose..."
+          options={[
+            { value: "less_than_four", label: "Less than 4 hrs" },
+            { value: "four_to_six", label: "Around 4-6 hrs" },
+            { value: "more_than_six", label: "More than 6 hrs" },
+          ]}
+          error={errors?.sleepPattern}
+        />
 
         <SelectTag
           label={"How do you best describe your sleep pattern?"}

@@ -1,6 +1,7 @@
 import { ErrorMsg } from "./ErrorMsg";
 
 export const InputTag = ({
+  label,
   type,
   placeholder,
   register,
@@ -13,6 +14,7 @@ export const InputTag = ({
   
   return (
     <label>
+      {label || ""}
       <input
         type={type}
         placeholder={placeholder}

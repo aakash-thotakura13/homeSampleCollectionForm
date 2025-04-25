@@ -17,25 +17,22 @@ const MultiStepForm = () => {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({});
 
-  console.log("Current Step:", step);
-  console.log("Form Data:", formData);
-
   const saveStepData = data => {
     setFormData(prev => ({ ...prev, ...data }));
     setStep(prev => prev + 1);
   };
 
   const steps = [
-    { component: <GeneralInfoForm key="general" onSubmit={saveStepData} /> },
-    { component: <SocialInfoForm key="social" onSubmit={saveStepData} gender={formData.gender} /> },
-    { component: <PersonalMedicalHistory key="personal" onSubmit={saveStepData} /> },
-    { component: <FamilyHistoryForm key="family" onSubmit={saveStepData} /> },
-    // { component: <ComplaintsForm key="complaints" onSubmit={saveStepData} /> },
-    { component: <LifestyleForm key="lifestyle" onSubmit={saveStepData} /> },
-    { component: <MedicalHistoryForm key="medical" onSubmit={saveStepData} /> },
-    { component: <DietaryPreferencesForm key="food" onSubmit={saveStepData} /> },
-    { component: <TestNCollectionInfo key="testInfo" onSubmit={saveStepData} /> },
-    { component: <SelectTests key="selectTest" onSubmit={saveStepData} /> },
+    { component: <GeneralInfoForm key="general" onSubmit={data => saveStepData({ generalInfo: data })} /> },
+    { component: <SocialInfoForm key="social" onSubmit={data => saveStepData({ socialInfo: data })} gender={formData.gender} /> },
+    { component: <PersonalMedicalHistory key="personal" onSubmit={data => saveStepData({ personalMedical: data })} /> },
+    { component: <FamilyHistoryForm key="family" onSubmit={data => saveStepData({ familyHistory: data })} /> },
+    // { component: <ComplaintsForm key="complaints" onSubmit={data=> saveStepData({generalInfo:data})} /> },
+    { component: <LifestyleForm key="lifestyle" onSubmit={data => saveStepData({ lifeStyle: data })} /> },
+    { component: <MedicalHistoryForm key="medical" onSubmit={data => saveStepData({ medicalHistory: data })} /> },
+    { component: <DietaryPreferencesForm key="food" onSubmit={data => saveStepData({ dietaryPreference: data })} /> },
+    { component: <TestNCollectionInfo key="testInfo" onSubmit={data => saveStepData({ testNCollection: data })} /> },
+    { component: <SelectTests key="selectTest" onSubmit={data => saveStepData({ testsInfo: data })} /> },
     { component: <Confirmation key="confirmation" formData={formData} /> },
   ];
 

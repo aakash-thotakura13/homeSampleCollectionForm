@@ -17,19 +17,91 @@ export const SocialInfoForm = ({ onSubmit, gender }) => {
 
         <Heading title="Social Information" />
 
-        <SelectTag register={register} registerName="smoke" requiredStatus={true} options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }, { value: "occasional", label: "Occasional" }, { value: "stopped", label: "Stopped" }]} error={errors?.smoke} defaultText="Do you smoke?" />
+        <SelectTag
+          label={"Do you smoke?"}
+          register={register}
+          registerName="smoke"
+          requiredStatus={true}
+          options={[
+            { value: "yes", label: "Yes" },
+            { value: "no", label: "No" },
+            { value: "occasional", label: "Occasional" },
+            { value: "stopped", label: "Stopped" },
+          ]}
+          error={errors?.smoke}
+          defaultText="Please choose..."
+        />
 
-        <SelectTag register={register} registerName="accompanySmoker" requiredStatus={true} options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }, { value: "occasional", label: "Occasional" }, { value: "stopped", label: "Stopped" }]} error={errors?.accompanySmoker} defaultText="Do you accompany a smoker?" />
+        <SelectTag
+          label="Do you accompany a smoker?"
+          register={register}
+          registerName="accompanySmoker"
+          requiredStatus={true}
+          options={[
+            { value: "yes", label: "Yes" },
+            { value: "no", label: "No" },
+            { value: "occasional", label: "Occasional" },
+            { value: "stopped", label: "Stopped" },
+          ]}
+          error={errors?.accompanySmoker}
+          defaultText="Please choose..."
+        />
 
-        <SelectTag register={register} registerName="drink" requiredStatus={true} options={[{ value: "yes_daily", label: "Yes, Daily" }, { value: "occasional", label: "Occasional" }, { value: "never", label: "Never" }]} error={errors?.drink} defaultText="Do you consume alcohol?" />
+        <SelectTag
+          label="Do you consume alcohol?"
+          register={register}
+          registerName="drink"
+          requiredStatus={true}
+          options={[
+            { value: "yes_daily", label: "Yes, Daily" },
+            { value: "occasional", label: "Occasional" },
+            { value: "never", label: "Never" },
+          ]}
+          error={errors?.drink}
+          defaultText="Please choose..."
+        />
 
-        <SelectTag register={register} registerName="tobacco" requiredStatus={true} options={[{ value: "yes_daily", label: "Yes, Daily" }, { value: "occasional", label: "Occasional" }, { value: "never", label: "Never" }]} error={errors?.tobacco} defaultText="Do you chew tobacco?" />
+        <SelectTag
+          label="Do you chew tobacco?"
+          register={register}
+          registerName="tobacco"
+          requiredStatus={true}
+          options={[
+            { value: "yes_daily", label: "Yes, Daily" },
+            { value: "occasional", label: "Occasional" },
+            { value: "never", label: "Never" },
+          ]}
+          error={errors?.tobacco}
+          defaultText="Please choose..."
+        />
 
-        <SelectTag register={register} registerName="classified" requiredStatus={true} options={[{ value: "nocturnal", label: "Nocturnal (Active during Night)" }, { value: "diurnal", label: "Diurnal (Active during Day)" },]} error={errors?.classified} defaultText="How are you classified by lifestyle?" />
+        <SelectTag
+          label="How do you classify your lifestyle?"
+          register={register}
+          registerName="classified"
+          requiredStatus={true}
+          options={[
+            { value: "nocturnal", label: "Nocturnal (Active during Night)" },
+            { value: "diurnal", label: "Diurnal (Active during Day)" },
+          ]}
+          error={errors?.classified}
+          defaultText="Please choose..."
+        />
 
         {
           gender === "female" &&
-          <SelectTag register={register} registerName={registerName} requiredStatus={true} options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]} error={errors?.pregnantOrBreastfeeding} defaultText="Are you pregnant or breastfeeding?" />
+          <SelectTag
+            label="Are you pregnant or breastfeeding?"
+            register={register}
+            registerName="pregnantOrBreastfeeding"
+            requiredStatus={true}
+            options={[
+              { value: "yes", label: "Yes" },
+              { value: "no", label: "No" }]
+            }
+            error={errors?.pregnantOrBreastfeeding}
+            defaultText="Please choose..."
+          />
         }
 
       </fieldset>

@@ -69,11 +69,9 @@ export const MedicalHistoryForm = ({ onSubmit }) => {
           )
         }
 
-        {/* Blood Pressure: */}
-        <InputTag type={"text"} placeholder="Blood Pressure (Please mention the last known reading)" register={register} registerName="glucoseReadings" requiredStatus={true} error={errors?.glucoseReadings} />
+        <InputTag type={"text"} label="Blood Pressure" placeholder="Blood Pressure (Please mention the last known reading)" register={register} registerName="glucoseReadings" requiredStatus={true} error={errors?.glucoseReadings} />
 
-
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", placeItems: "center", gap: "1em", }}>
+        <div style={{ display: "flex", justifyContent: "space-around", placeItems: "center", gap: "1em", }}>
 
           <InputTag type="number" placeholder="Pulse:" register={register} registerName="pulse" requiredStatus={false} error={errors?.pulse} />
 
@@ -81,7 +79,7 @@ export const MedicalHistoryForm = ({ onSubmit }) => {
 
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", placeItems: "center", gap: "1rem", }}>
+        <div style={{ display: "flex", justifyContent: "space-between", placeItems: "center", gap: "1rem", }}>
 
           <span>
 
@@ -91,13 +89,21 @@ export const MedicalHistoryForm = ({ onSubmit }) => {
 
           </span>
 
-          <CirlceComponent lable="BMI" value={bmi} />
+          <span style={{ width: "50%", display: "grid", placeItems: "center", }}>
+
+            <CirlceComponent lable="BMI" value={bmi} />
+
+          </span>
 
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", placeItems: "center", gap: "1rem", }}>
+        <div style={{ display: "flex", justifyContent: "space-around", placeItems: "center", gap: "1rem", }}>
 
-          <CirlceComponent lable="WHR" value={whr} />
+          <span style={{ width: "50%", display: "grid", placeItems: "center", }}>
+
+            <CirlceComponent lable="WHR" value={whr} />
+
+          </span>
 
           <span>
 

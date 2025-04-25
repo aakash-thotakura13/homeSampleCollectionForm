@@ -4,14 +4,17 @@ import { useForm } from "react-hook-form";
 import { ErrorMsg } from "./common/ErrorMsg";
 import { Heading } from "./common/Heading";
 import { SelectTag } from "./common/SelectTag";
-import { CheckBoxTag } from "./common/CheckBoxTag";
 
 export const DietaryPreferencesForm = ({ onSubmit }) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
+
+  const waterIntake = watch("waterIntake") || 0;
+
 
   const submitForm = (data) => {
     console.log("Food Intake Submitted:", data);
@@ -26,6 +29,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
         <Heading title={"Dietary Preferences"} />
 
         <SelectTag
+          label={"Are you?"}
           register={register}
           registerName={"dietType"}
           requiredStatus={true}
@@ -38,10 +42,10 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
             { value: "eggetarian", label: "Eggetarian" },
           ]}
           error={errors?.dietType}
-          defaultText={"Are you?"}
+          defaultText={"Please choose..."}
         />
 
-        <label>
+        {/* <label>
           Do you tend to skip meals?
           <span style={{ fontSize: "0.7rem", color: "gray" }}>(You can select multiple)</span>
           <div style={{ marginLeft: "0.5rem" }}>
@@ -49,7 +53,21 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
             <CheckBoxTag label={"Lunch"} register={register} registerName={"mealsSkipped"} value={"lunch"} />
             <CheckBoxTag label={"Dinner"} register={register} registerName={"mealsSkipped"} value={"dinner"} />
           </div>
-        </label>
+        </label> */}
+
+        <SelectTag
+          label={"Do you tend to skip meals?"}
+          register={register}
+          registerName={"mealsSkipped"}
+          requiredStatus={true}
+          options={[
+            { value: "breakfast", label: "Breakfast" },
+            { value: "lunch", label: "Lunch" },
+            { value: "dinner", label: "Dinner" },
+          ]}
+          error={errors?.mealsSkipped}
+          defaultText={"Please choose..."}
+        />
 
         {/* <SelectTag
           register={register}
@@ -61,24 +79,35 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
         /> */}
 
         <SelectTag
+          label={"Are you a TV-eater? PLEASE-SUGGEST?"}
           register={register}
           registerName={"tvEater"}
           requiredStatus={true}
-          options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }, { value: "sometimes", label: "Sometimes" }]}
+          options={[
+            { value: "yes", label: "Yes" },
+            { value: "no", label: "No" },
+            { value: "sometimes", label: "Sometimes" },
+          ]}
           error={errors?.tvEater}
-          defaultText={"Are you a TV-eater? PENDING-CHANGE"}
+          defaultText={"Please choose..."}
         />
 
         <SelectTag
+          label={"Gap between dinner and sleep?"}
           register={register}
           registerName={"dinnerSleepGap"}
           requiredStatus={true}
-          options={[{ value: "1_2hrs", label: "1-2 hours" }, { value: "below_1hr", label: "Below 1 hour" }, { value: "no_gap", label: "I sleep immediately after dinner" },]}
+          options={[
+            { value: "1_2hrs", label: "1-2 hours" },
+            { value: "below_1hr", label: "Below 1 hour" },
+            { value: "no_gap", label: "I sleep immediately after dinner" },
+          ]}
           error={errors?.dinnerSleepGap}
-          defaultText={"Gap between dinner and sleep:?"}
+          defaultText={"Please choose..."}
         />
 
         <SelectTag
+          label={"How often do you eat fruits?"}
           register={register}
           registerName="fruitFrequency"
           requiredStatus={true}
@@ -89,10 +118,11 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
             { value: "rarely", label: "Not really / Sometimes" },
           ]}
           error={errors?.fruitFrequency}
-          defaultText="How often do you eat fruits?"
+          defaultText="Please choose..."
         />
 
         <SelectTag
+          label={"How often do you eat green vegetables?"}
           register={register}
           registerName="greensFrequency"
           requiredStatus={true}
@@ -103,10 +133,11 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
             { value: "rarely", label: "Not really / Sometimes" },
           ]}
           error={errors?.greensFrequency}
-          defaultText="How often do you eat green vegetables?"
+          defaultText="Please choose..."
         />
 
         <SelectTag
+          label={"Do you consume milk (products) thrice a week?"}
           register={register}
           registerName="milkFrequency"
           requiredStatus={true}
@@ -116,10 +147,11 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
             { value: "sometimes", label: "Sometimes" },
           ]}
           error={errors?.milkFrequency}
-          defaultText="Do you consume milk (products) thrice a week?"
+          defaultText="Please choose..."
         />
 
         <SelectTag
+          label={"Do you consume carbonated drinks?"}
           register={register}
           registerName="carbonated"
           requiredStatus={true}
@@ -129,23 +161,26 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
             { value: "maybe", label: "Maybe" },
           ]}
           error={errors?.carbonated}
-          defaultText="Do you consume carbonated drinks?"
+          defaultText="Please choose..."
         />
 
         <SelectTag
+          label={"How often do you eat outside food per week?"}
           register={register}
           registerName="snackHabit"
           requiredStatus={true}
           options={[
+            { value: "daily", label: "Daily" },
             { value: "more_than_5_times", label: "> 5 times" },
             { value: "less_than_5_times", label: "< 5 times" },
             { value: "not_sure", label: "Not Sure!" },
           ]}
           error={errors?.snackHabit}
-          defaultText="How often do you eat outside food per week?"
+          defaultText="Please choose..."
         />
 
-        <SelectTag
+        {/* <SelectTag
+          label={"How much water do you consume per day?"}
           register={register}
           registerName="waterIntake"
           requiredStatus={true}
@@ -155,10 +190,28 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
             { value: "", label: "need options" },
           ]}
           error={errors?.waterIntake}
-          defaultText=" Water intake question? PENDING-CHANGE"
-        />
+          defaultText="Please choose..."
+        /> */}
 
-        <SelectTag
+        <label>
+          How much water do you consume per day?
+          <div className="slider-container" >
+            <input
+              className="water-slider"
+              type="range"
+              min="0"
+              max="5"
+              step="0.5"
+              {...register("waterIntake", {
+                required: "This field is required"
+              })}
+            />
+            <div className="slider-label">{waterIntake} L</div>
+          </div>
+          <ErrorMsg err={errors?.waterIntake?.message} />
+        </label>
+
+        {/* <SelectTag
           register={register}
           registerName="saltType"
           requiredStatus={true}
@@ -172,7 +225,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           ]}
           error={errors?.saltType}
           defaultText=" Type of Salt you use?"
-        />
+        /> */}
 
       </fieldset>
 
