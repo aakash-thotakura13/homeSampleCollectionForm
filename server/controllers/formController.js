@@ -8,10 +8,13 @@ const submitForm = async (req, res) => {
     const newSubmission = new FormSubmission(req.body);
     await newSubmission.save();
 
-    const filenName = `submission_${newSubmission._id}`;
-    const pdfPath = await generatePDF(req.body, filenName);
+    const fileName = `submission_${newSubmission._id}`;
+    const pdfURL = await generatePDF(req.body, fileName);
 
-    res.status(201).json({ message: "Form saved and pdf generated", pdfPath });
+    newSubmission.pdfUrl = pdfURL;
+    await newSubmission.save();
+
+    res.status(201).json({ message: "Saved Form and uploaded to Cloudinary", pdfURL });
 
   } catch (error) {
 
