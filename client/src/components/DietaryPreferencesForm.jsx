@@ -64,6 +64,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
             { value: "breakfast", label: "Breakfast" },
             { value: "lunch", label: "Lunch" },
             { value: "dinner", label: "Dinner" },
+            { value: "none", label: "Never" },
           ]}
           error={errors?.mealsSkipped}
           defaultText={"Please choose..."}
