@@ -17,10 +17,19 @@ const connectDB = require("./config/db");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/pdfs", express.static("pdfs"));
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://homesamplecollectionform.netlify.app/",
+    ],
+    methods: ["GET", "POST"],
+  })
+);
 
 dotenv.config();
 connectDB();
