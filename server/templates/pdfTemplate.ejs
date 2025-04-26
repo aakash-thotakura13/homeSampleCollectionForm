@@ -5,70 +5,111 @@
     <title>Home Sample Collection Report</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 20px 10px;
         font-size: 14px;
       }
       h1,
       h2 {
+        padding: 2px 4px;
+        margin: 2px;
         text-align: center;
-        color: #0d6efd;
+        color: #005d06;
       }
       table {
         width: 100%;
         border-collapse: collapse;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         font-size: 14px;
       }
       th,
       td {
-        padding: 8px 12px;
+        padding: 6px 10px;
         border: 1px solid #ccc;
         text-align: left;
       }
       th {
         background-color: #f0f0f0;
+        text-align: center;
       }
       .section {
-        margin-top: 30px;
+        margin-top: 20px;
       }
       .highlight {
-        background-color: #d4edda;
+        background-color: #779c80;
+      }
+      .highlight > tr > th {
+        text-align: left;
+      }
+      .highlight > tr > td {
+        text-align: right;
+      }
+      .grade-high {
+        color: #d9534f; /* Red */
+        font-weight: bold;
+      }
+      .grade-medium {
+        color: #f0ad4e; /* Orange */
+        font-weight: bold;
+      }
+      .bmi-note {
+        font-size: 12px;
+        margin-top: 15px;
+        color: #555;
+      }
+      .grade-normal {
+        color: green;
+        font-weight: bold;
+      }
+      .grade-warning {
+        color: #f0ad4e; /* Yellow */
+        font-weight: bold;
+      }
+      .grade-orange {
+        color: orange;
+        font-weight: bold;
+      }
+      .grade-danger {
+        color: red;
+        font-weight: bold;
       }
     </style>
   </head>
   <body>
     <h1>Home Sample Collection Summary</h1>
+    <p style="text-align: center; font-size: 12px; color: #777; padding: 1px; margin: 1px;">
+      Generated on: 
+      <%= generatedAt.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }) %>, 
+      <%= generatedAt.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) %>
+    </p>
 
     <!-- GENERAL INFO -->
     <div class="section">
       <h2>General Information</h2>
-      <table>
+      <table style="width: 100%;">
         <tr>
           <th>Full Name</th>
-          <th>Age/Gender</th>
-          <!-- <th>Gender</th> -->
+          <th>Age / Gender</th>
           <th>Mobile</th>
           <th>Email</th>
         </tr>
         <tr>
           <td><%= data.generalInfo?.fullName || "—" %></td>
-          <td><%= data.generalInfo?.age / data.generalInfo?.gender || "—" %></td>
-          <!-- <td><%= data.generalInfo?.gender || "—" %></td> -->
+          <td><%= data.generalInfo?.age || "—" %> / <%= data.generalInfo?.gender || "—" %></td>
           <td><%= data.generalInfo?.mobile || "—" %></td>
           <td><%= data.generalInfo?.email || "—" %></td>
         </tr>
         <tr>
-          <th>Address</th>
-          <th>Pincode</th>
-          <th>Google Pin</th>
-          <th colspan="2"></th>
+          <!-- <th>Address</th> -->
+          <!-- <th>Pincode</th> -->
+          <th colspan="2">Google Pin</th>
+          <th colspan="2">Booking ID</th>
         </tr>
         <tr>
-          <td><%= data.generalInfo?.address || "—" %></td>
-          <td><%= data.generalInfo?.pincode || "—" %></td>
-          <td><%= data.generalInfo?.googleLocationPin || "—" %></td>
-          <td colspan="2"></td>
+          <!-- <td><%= data.generalInfo?.address || "—" %></td> -->
+          <!-- <td><%= data.generalInfo?.pincode || "—" %></td> -->
+          <td colspan="2"><%= data.generalInfo?.googleLocationPin || "—" %></td>
+          <td colspan="2">BOOKING_ID</td>
         </tr>
       </table>
     </div>
@@ -76,57 +117,96 @@
     <!-- MEDICAL HISTORY -->
     <div class="section">
       <h2>Medical History</h2>
-      <table>
+      <% 
+        const weight = data.medicalHistory?.weight;
+        const height = data.medicalHistory?.height;
+        const waist = data.medicalHistory?.waist;
+        const hip = data.medicalHistory?.hip;
+
+        const bmi = (weight && height) ? (weight / Math.pow(height / 100, 2)).toFixed(2) : null;
+
+        let bmiCategory = "";
+        let bmiColorClass = "";
+
+        if (bmi) {
+          const bmiValue = parseFloat(bmi);
+          if (bmiValue >= 18.5 && bmiValue <= 22.99) {
+            bmiCategory = "Normal";
+            bmiColorClass = "grade-normal";
+          } else if (bmiValue >= 23 && bmiValue <= 24.9) {
+            bmiCategory = "Grade I";
+            bmiColorClass = "grade-warning";
+          } else if (bmiValue >= 25 && bmiValue <= 27.5) {
+            bmiCategory = "Grade II";
+            bmiColorClass = "grade-warning";
+          } else if (bmiValue >= 27.6 && bmiValue <= 32.4) {
+            bmiCategory = "Grade III";
+            bmiColorClass = "grade-orange";
+          } else if (bmiValue >= 32.5) {
+            bmiCategory = "Grade IV";
+            bmiColorClass = "grade-danger";
+          } else {
+            bmiCategory = "Below Normal";
+            bmiColorClass = "grade-warning";
+          }
+        }
+
+        const waistHeightRatio = (waist && height)
+          ? (height != 0 ? (waist / height).toFixed(2) : null)
+          : null;
+
+        let waistHeightCategory = "";
+        if (waistHeightRatio) {
+          waistHeightCategory = (parseFloat(waistHeightRatio) > 0.5) ? "Normal" : "Needs Attention";
+        }
+      %>
+
+      <table style="width: 100%;">
         <tr>
           <th>Height (cm)</th>
           <th>Weight (kg)</th>
-          <!-- <th>Hip (cm)</th> -->
           <th>Waist (cm)</th>
           <th>BMI</th>
           <th>Waist-Height Ratio</th>
         </tr>
         <tr>
-          <td><%= data.medicalHistory?.height || "—" %></td>
-          <td><%= data.medicalHistory?.weight || "—" %></td>
-          <!-- <td><%= data.medicalHistory?.hip || "—" %></td> -->
-          <td><%= data.medicalHistory?.waist || "—" %></td>
+          <td><%= height || "—" %></td>
+          <td><%= weight || "—" %></td>
+          <td><%= waist || "—" %></td>
+
+          <!-- BMI cell -->
           <td>
-            <%= (data.medicalHistory?.weight && data.medicalHistory?.height) ?
-            (data.medicalHistory.weight / Math.pow(data.medicalHistory.height /
-            100, 2)).toFixed(2) : "—" %>
+            <% if (bmi) { %> <%= bmi %> (<span class="<%= bmiColorClass %>"
+              ><%= bmiCategory %></span
+            >) <% } else { %> — <% } %>
           </td>
+
+          <!-- Waist-Height Ratio cell -->
           <td>
-            <%= (data.medicalHistory?.waist && data.medicalHistory?.height) ?
-            (data.medicalHistory.waist / data.medicalHistory.height).toFixed(1)
-            : "—" %>
+            <% if (waistHeightRatio) { %> <%= waistHeightRatio %> (<%=
+            waistHeightCategory %>) <% } else { %> — <% } %>
           </td>
         </tr>
       </table>
-    </div>
 
-    <div
-      style="display: flex; justify-content: space-between; margin-top: 20px"
-    >
-      <div>
-        <p><b>BMI Classification:</b></p>
-        <p>Normal: 18.5-24.9 kg/m2</p>
-        <p>Grade I: 23-24.9 kg/m2</p>
-        <p>Grade II: 25-27.5 kg/m2</p>
-        <p>Grade III: 27.6-32.4 kg/m2</p>
-        <p>Grade IV: ≥32.5 kg/m2</p>
-      </div>
-
-      <div>
-        <p><b>Waist-Hip Ratio Classification:</b></p>
-        <p>Normal: < 0.85 (female) or < 0.9 (male)</p>
-        <p>High: ≥0.85 (female) or ≥0.9 (male)</p>
+      <!-- BMI Grading Note -->
+      <div class="bmi-note">
+        <h3 style="margin: 0px; padding: 0px; text-align: center; border-bottom: 1px solid #ccc;">BMI Grading:</h3>
+        <p style="display: flex; justify-content: space-around; flex-wrap: wrap; align-items: center;"><i>
+          <span>Normal: 18.5-22.99 kg/m²</span>
+          <span>Grade I: 23-24.9 kg/m²</span>
+          <span>Grade II: 25-27.5 kg/m²</span>
+          <span>Grade III: 27.6-32.4 kg/m²</span>
+          <span>Grade IV: ≥32.5 kg/m²</span>
+        </i>
+        </p>
       </div>
     </div>
 
     <!-- TEST & COLLECTION INFO -->
     <div class="section">
       <h2>Test & Collection Details</h2>
-      <table>
+      <table style="width: 100%;">
         <tr>
           <th>Fasting Confirmation</th>
           <!-- <th>Fainting History</th> -->
@@ -136,7 +216,7 @@
         </tr>
         <tr>
           <td><%= data.testNCollection?.fastingConfirmation || "—" %></td>
-          <!-- <td><%= data.testNCollection?.faintingHistory || "—" %></td> -->
+          <!-- <td><%= data.testAndCollectionInfo?.faintingHistory || "—" %></td> -->
           <td><%= data.testNCollection?.bloodThinners || "—" %></td>
           <td><%= data.testNCollection?.hasAllergies || "—" %></td>
           <td><%= data.testNCollection?.requestType || "—" %></td>
@@ -147,35 +227,57 @@
     <!-- SELECTED TESTS -->
     <div class="section">
       <h2>Selected Tests</h2>
-      <table>
+
+      <% if (Array.isArray(data.testsInfo) && data.testsInfo.length > 0)
+      { %>
+      <table style="width: 100%;">
+
         <tr>
           <th>Test Name</th>
           <th>Price (₹)</th>
         </tr>
-        <% let totalPrice = 0; %> <% data.testsInfo?.forEach(test => { %> <%
-        totalPrice += test.price; %>
-        <tr>
-          <td><%= test.testName %></td>
-          <td>₹<%= test.price %></td>
+
+        <%
+          let totalPrice = 0;
+          data.testsInfo.forEach(test => { totalPrice += test.price;
+        %>
+        
+        <tr style="font-size: 12px;">
+          <td style="border: none; border-right: 1px solid #ccc; border-left: 1px solid #ccc; text-align: left;"><%= test.testName %></td>
+          <td style="border: none; border-right: 1px solid #ccc; border-left: 1px solid #ccc; text-align: right;">₹<%= test.price %></td>
         </tr>
         <% }) %>
+
         <tr class="highlight">
-          <th>Total Price</th>
-          <td>₹<%= totalPrice %></td>
+          <th style="text-align: left;" >Total Price</th>
+          <td style="text-align: right;">₹<%= totalPrice %></td>
         </tr>
 
         <% if (totalPrice > 1000) { let discount = Math.round(totalPrice * 0.2);
         let discountedPrice = totalPrice - discount; %>
+
         <tr class="highlight">
-          <th>Discount (20%)</th>
-          <td>-₹<%= discount %></td>
+          <th style="text-align: left;" >Discount (20%)</th>
+          <td style="text-align: right;">-₹<%= discount %></td>
         </tr>
+        
         <tr class="highlight">
-          <th>Final Price after Discount</th>
-          <td>₹<%= discountedPrice %></td>
+          <th style="text-align: left;" >Final Price after Discount</th>
+          <td style="text-align: right;">₹<%= discountedPrice %></td>
         </tr>
         <% } %>
+
       </table>
+
+      <% } else { %>
+      <p>No tests selected.</p>
+      <% } %>
+    
     </div>
+
+    <footer style="text-align: center; font-size: 12px; color: #888; margin-top: 50px; border-top: 1px solid #ccc; padding-top: 10px;">
+      <p>Thank you for choosing <strong>Tricorder Home Collection Services</strong> 🙏</p>
+      <p>Stay Healthy. Stay Happy.</p>
+    </footer>
   </body>
 </html>
