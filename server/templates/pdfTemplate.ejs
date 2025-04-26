@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home Sample Collection Report</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        font-size: 14px;
+      }
+      h1,
+      h2 {
+        text-align: center;
+        color: #0d6efd;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+      th,
+      td {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        text-align: left;
+      }
+      th {
+        background-color: #f0f0f0;
+      }
+      .section {
+        margin-top: 30px;
+      }
+      .highlight {
+        background-color: #d4edda;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Home Sample Collection Summary</h1>
+
+    <!-- GENERAL INFO -->
+    <div class="section">
+      <h2>General Information</h2>
+      <table>
+        <tr>
+          <th>Full Name</th>
+          <th>Age/Gender</th>
+          <!-- <th>Gender</th> -->
+          <th>Mobile</th>
+          <th>Email</th>
+        </tr>
+        <tr>
+          <td><%= data.generalInfo?.fullName || "—" %></td>
+          <td><%= data.generalInfo?.age / data.generalInfo?.gender || "—" %></td>
+          <!-- <td><%= data.generalInfo?.gender || "—" %></td> -->
+          <td><%= data.generalInfo?.mobile || "—" %></td>
+          <td><%= data.generalInfo?.email || "—" %></td>
+        </tr>
+        <tr>
+          <th>Address</th>
+          <th>Pincode</th>
+          <th>Google Pin</th>
+          <th colspan="2"></th>
+        </tr>
+        <tr>
+          <td><%= data.generalInfo?.address || "—" %></td>
+          <td><%= data.generalInfo?.pincode || "—" %></td>
+          <td><%= data.generalInfo?.googleLocationPin || "—" %></td>
+          <td colspan="2"></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- MEDICAL HISTORY -->
+    <div class="section">
+      <h2>Medical History</h2>
+      <table>
+        <tr>
+          <th>Height (cm)</th>
+          <th>Weight (kg)</th>
+          <!-- <th>Hip (cm)</th> -->
+          <th>Waist (cm)</th>
+          <th>BMI</th>
+          <th>Waist-Height Ratio</th>
+        </tr>
+        <tr>
+          <td><%= data.medicalHistory?.height || "—" %></td>
+          <td><%= data.medicalHistory?.weight || "—" %></td>
+          <!-- <td><%= data.medicalHistory?.hip || "—" %></td> -->
+          <td><%= data.medicalHistory?.waist || "—" %></td>
+          <td>
+            <%= (data.medicalHistory?.weight && data.medicalHistory?.height) ?
+            (data.medicalHistory.weight / Math.pow(data.medicalHistory.height /
+            100, 2)).toFixed(2) : "—" %>
+          </td>
+          <td>
+            <%= (data.medicalHistory?.waist && data.medicalHistory?.height) ?
+            (data.medicalHistory.waist / data.medicalHistory.height).toFixed(1)
+            : "—" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div
+      style="display: flex; justify-content: space-between; margin-top: 20px"
+    >
+      <div>
+        <p><b>BMI Classification:</b></p>
+        <p>Normal: 18.5-24.9 kg/m2</p>
+        <p>Grade I: 23-24.9 kg/m2</p>
+        <p>Grade II: 25-27.5 kg/m2</p>
+        <p>Grade III: 27.6-32.4 kg/m2</p>
+        <p>Grade IV: ≥32.5 kg/m2</p>
+      </div>
+
+      <div>
+        <p><b>Waist-Hip Ratio Classification:</b></p>
+        <p>Normal: < 0.85 (female) or < 0.9 (male)</p>
+        <p>High: ≥0.85 (female) or ≥0.9 (male)</p>
+      </div>
+    </div>
+
+    <!-- TEST & COLLECTION INFO -->
+    <div class="section">
+      <h2>Test & Collection Details</h2>
+      <table>
+        <tr>
+          <th>Fasting Confirmation</th>
+          <!-- <th>Fainting History</th> -->
+          <th>Blood Thinners</th>
+          <th>Allergies</th>
+          <th>Request Type</th>
+        </tr>
+        <tr>
+          <td><%= data.testNCollection?.fastingConfirmation || "—" %></td>
+          <!-- <td><%= data.testNCollection?.faintingHistory || "—" %></td> -->
+          <td><%= data.testNCollection?.bloodThinners || "—" %></td>
+          <td><%= data.testNCollection?.hasAllergies || "—" %></td>
+          <td><%= data.testNCollection?.requestType || "—" %></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- SELECTED TESTS -->
+    <div class="section">
+      <h2>Selected Tests</h2>
+      <table>
+        <tr>
+          <th>Test Name</th>
+          <th>Price (₹)</th>
+        </tr>
+        <% let totalPrice = 0; %> <% data.testsInfo?.forEach(test => { %> <%
+        totalPrice += test.price; %>
+        <tr>
+          <td><%= test.testName %></td>
+          <td>₹<%= test.price %></td>
+        </tr>
+        <% }) %>
+        <tr class="highlight">
+          <th>Total Price</th>
+          <td>₹<%= totalPrice %></td>
+        </tr>
+
+        <% if (totalPrice > 1000) { let discount = Math.round(totalPrice * 0.2);
+        let discountedPrice = totalPrice - discount; %>
+        <tr class="highlight">
+          <th>Discount (20%)</th>
+          <td>-₹<%= discount %></td>
+        </tr>
+        <tr class="highlight">
+          <th>Final Price after Discount</th>
+          <td>₹<%= discountedPrice %></td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+  </body>
+</html>
