@@ -37,13 +37,13 @@ export const TestNCollectionInfo = ({ onSubmit }) => {
         <SelectTag
           label="Have you experienced fainting during blood collection in the past?"
           register={register}
-          registerName="hasFasting"
+          registerName="faintingHistory"
           requiredStatus={true}
           options={[
             { value: "yes", label: "Yes" },
             { value: "no", label: "No" },
           ]}
-          error={errors?.hasFasting}
+          error={errors?.faintingHistory}
           defaultText="Please choose..."
         />
 
