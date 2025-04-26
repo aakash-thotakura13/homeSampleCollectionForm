@@ -69,14 +69,14 @@ const FormSubmissionSchema = new mongoose.Schema(
     },
     testNCollection: {
       fastingConfirmation: String,
-      hasFasting: String,
+      faintingHistory: String,
       bloodThinners: String,
       hasAllergies: String,
       allergyDetails: String,
       requestType: String,
       lastHealthCheckup: Date,
     },
-    pdfUrl: { type: String, required: true },
+    pdfUrl: String,
   },
   { timestamps: true }
 );
