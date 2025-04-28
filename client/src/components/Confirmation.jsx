@@ -43,6 +43,42 @@ export const Confirmation = ({ formData }) => {
     submitFormAndGeneratePDF();
   }, [formData]);
 
+  
+  const handleSendEmail = async () => {
+
+    if (!formData.generalInfo.email || !pdfURL) {
+      alert("User email or PDF URL is missing.");
+      return;
+    }
+
+    try {
+
+      const res = await fetch(`${BASE_URL}/api/form/send-email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.generalInfo.email,
+          pdfURL: pdfURL,
+        }),
+      });
+
+      const result = await res.json();
+
+      if(res.ok) {
+        alert("Email sent successfully!");
+      } else {
+        alert("Failed to send email: " + result.message);
+      }
+
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("❌ Network error while sending email.");
+    }
+
+  };
+
   if (loading) return <p style={{ textAlign: "center" }}>⏳ Generating your report... Please wait.</p>;
   if (error) return <p style={{ color: "red", textAlign: "center" }}>{error}</p>;
 
@@ -85,8 +121,8 @@ export const Confirmation = ({ formData }) => {
       )}
 
       <div style={{ marginTop: "1.5rem" }}>
-        <button disabled style={{ padding: "10px 20px", margin: "0.5rem", cursor: "not-allowed" }}>
-          📧 Send via Email (Coming Next)
+        <button onClick={handleSendEmail} style={{ padding: "10px 20px", margin: "0.5rem", cursor: "pointer" }}>
+          📧 Send via Email
         </button>
         <button disabled style={{ padding: "10px 20px", margin: "0.5rem", cursor: "not-allowed" }}>
           💬 Share via WhatsApp (Coming Soon)
