@@ -15,7 +15,7 @@ export const PersonalMedicalHistory = ({ onSubmit }) => {
 
   const show = name => selectedConditions.includes(name);
 
-  const submitForm = (data) => onSubmit(data);
+  const submitForm = data => onSubmit(data);
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>

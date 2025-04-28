@@ -36,8 +36,6 @@ const MultiStepForm = () => {
     { component: <Confirmation key="confirmation" formData={formData} /> },
   ];
 
-  console.log("Current Step:", step);
-
   return (
     <div style={{ maxWidth: "600px", margin: "0 auto", padding: "1rem" }}>
       {steps[step].component}

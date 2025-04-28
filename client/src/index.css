@@ -61,6 +61,7 @@ button {
   border: none;
   border-radius: 0.5em;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
-  background-color: #76AF4488;
+  background-color: #76AF44;
+  color: whitesmoke;
 }
 

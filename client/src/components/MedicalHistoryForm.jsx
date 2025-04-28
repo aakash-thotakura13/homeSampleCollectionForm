@@ -35,10 +35,7 @@ export const MedicalHistoryForm = ({ onSubmit }) => {
       ? (waist / hip).toFixed(2)
       : "";
 
-  const submitForm = (data) => {
-    console.log("Medical History Submitted:", data);
-    onSubmit(data);
-  };
+  const submitForm = data => onSubmit(data);
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>

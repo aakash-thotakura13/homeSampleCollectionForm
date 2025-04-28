@@ -16,10 +16,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
   const waterIntake = watch("waterIntake") || 0;
 
 
-  const submitForm = (data) => {
-    console.log("Food Intake Submitted:", data);
-    onSubmit(data);
-  };
+  const submitForm = data => onSubmit(data);
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>

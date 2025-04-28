@@ -1,19 +1,19 @@
 
 import './App.css'
-import { ComplaintsForm } from './components/ComplaintForm';
-
 import MultiStepForm from './components/MultiStepForm';
 
-import { FamilyHistoryForm } from './components/FamilyHistoryForm';
-import { DietaryPreferencesForm } from './components/DietaryPreferencesForm';
-import { GeneralInfoForm } from './components/GeneralInfoForm';
-import { LifestyleForm } from './components/LifestyleForm';
-import { MedicalHistoryForm } from './components/MedicalHistoryForm';
-import { SocialInfoForm } from './components/SocialInfoForm';
-import { Confirmation } from './components/Confirmation';
-import { PersonalMedicalHistory } from './components/PersonalMedicalHistoryForm';
-import { TestNCollectionInfo } from './components/TestNCollectionInfo';
-import { SelectTests } from './components/SelectTests';
+// import { ComplaintsForm } from './components/ComplaintForm';
+
+// import { FamilyHistoryForm } from './components/FamilyHistoryForm';
+// import { DietaryPreferencesForm } from './components/DietaryPreferencesForm';
+// import { GeneralInfoForm } from './components/GeneralInfoForm';
+// import { LifestyleForm } from './components/LifestyleForm';
+// import { MedicalHistoryForm } from './components/MedicalHistoryForm';
+// import { SocialInfoForm } from './components/SocialInfoForm';
+// import { Confirmation } from './components/Confirmation';
+// import { PersonalMedicalHistory } from './components/PersonalMedicalHistoryForm';
+// import { TestNCollectionInfo } from './components/TestNCollectionInfo';
+// import { SelectTests } from './components/SelectTests';
 
 function App() {
 
@@ -23,7 +23,7 @@ function App() {
 
       <p style={{
         textAlign: "center",
-        backgroundColor: "#76AF44",
+        background: "linear-gradient(to right, #76AF4499, #76AF44)",
         padding: "1em 0em",
         margin: "0em",
         color: "white",
@@ -37,7 +37,7 @@ function App() {
       <MultiStepForm />
 
       <footer style={{
-        backgroundColor: "#76AF44",
+        background: "linear-gradient(to right, #76AF4499, #76AF44)",
         padding: "1rem",
         fontWeight: "500",
         boxShadow: "0 -4px -8px 0 rgba(0, 0, 0, 0.2), 0 -6px -20px 0 rgba(0, 0, 0, 0.19)",
@@ -56,17 +56,17 @@ function App() {
 
       </footer>
 
-      <GeneralInfoForm />
+      {/* <GeneralInfoForm />
       <SocialInfoForm />
       <PersonalMedicalHistory />
       <FamilyHistoryForm />
-      {/* <ComplaintsForm /> This Page is still available, but is not required for the time being */}
+      <ComplaintsForm /> This Page is still available, but is not required for the time being
       <LifestyleForm />
       <MedicalHistoryForm />
       <DietaryPreferencesForm />
       <TestNCollectionInfo />
       <SelectTests />
-      {/* <Confirmation /> */}
+      <Confirmation /> */}
 
     </main>
 

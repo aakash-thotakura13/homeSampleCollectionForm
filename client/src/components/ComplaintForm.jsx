@@ -9,10 +9,7 @@ export const ComplaintsForm = ({ onSubmit }) => {
     formState: { errors },
   } = useForm();
 
-  const submitForm = (data) => {
-    console.log("Complaints Submitted:", data);
-    onSubmit(data);
-  };
+  const submitForm = data => onSubmit(data);
 
   return (
     <form onSubmit={handleSubmit(submitForm)}>
