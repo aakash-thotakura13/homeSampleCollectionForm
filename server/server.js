@@ -17,9 +17,8 @@ const connectDB = require("./config/db");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use("/pdfs", express.static("pdfs"));
+dotenv.config();
+connectDB();
 
 app.use(
   cors({
@@ -32,8 +31,9 @@ app.use(
   })
 );
 
-dotenv.config();
-connectDB();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/pdfs", express.static("pdfs"));
 
 const formRoutes = require("./routes/formRoutes");
 
@@ -43,4 +43,6 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-app.listen(PORT, () => console.log(`🚀 Server is running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
