@@ -9,7 +9,7 @@ export const Confirmation = ({ formData }) => {
   const BASE_URL = window.location.hostname === "localhost"
     ? "http://localhost:5000"
     : "https://homesamplecollectionform.onrender.com";
-
+    
   useEffect(() => {
     const submitFormAndGeneratePDF = async () => {
       setLoading(true);
@@ -34,7 +34,7 @@ export const Confirmation = ({ formData }) => {
           setError(result.message || "❌ Something went wrong while generating the PDF.");
         }
       } catch (err) {
-        setError("❌ Network error: " + err.message);
+        setError("❌ Network Error: " + err.message);
       } finally {
         setLoading(false);
       }
@@ -43,7 +43,7 @@ export const Confirmation = ({ formData }) => {
     submitFormAndGeneratePDF();
   }, [formData]);
 
-  
+
   const handleSendEmail = async () => {
 
     if (!formData.generalInfo.email || !pdfURL) {

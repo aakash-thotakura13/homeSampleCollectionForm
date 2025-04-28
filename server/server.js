@@ -25,9 +25,10 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://homesamplecollectionform.netlify.app/",
+      "https://homesamplecollectionform.netlify.app",
     ],
     methods: ["GET", "POST"],
+    credentials: true,
   })
 );
 
