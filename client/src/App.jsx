@@ -23,7 +23,7 @@ function App() {
 
       <p style={{
         textAlign: "center",
-        background: "linear-gradient(to right, #76AF4499, #76AF44)",
+        background: "linear-gradient(to right, #76AF44, #76AF44)",
         padding: "1em 0em",
         margin: "0em",
         color: "white",
