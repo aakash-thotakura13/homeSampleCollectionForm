@@ -40,7 +40,7 @@ const formRoutes = require("./routes/formRoutes");
 app.use("/api/form", formRoutes);
 
 app.get("/", (req, res) => {
-  res.send("API is running...");
+  res.send("API is running... added Chromium and puppeteer to server");
 });
 
 app.listen(PORT, () => {
