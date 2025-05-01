@@ -8,7 +8,15 @@ const cloudinary = require("./cloudinary");
 const generatePDF = async (formData, fileName) => {
   try {
     // Render EJS template to HTML
-    const html = await ejs.renderFile(path.join(__dirname, "../templates/pdfTemplate.ejs"), { data: formData });
+    // const html = await ejs.renderFile(path.join(__dirname, "../templates/pdfTemplate.ejs"), { data: formData });
+    const html = await ejs.renderFile(
+      path.join(__dirname, "../templates/pdfTemplate.ejs"),
+      {
+        data: formData,
+        generatedAt: new Date(), // 🆕 Add this!
+      }
+    );
+    
 
     // Launch Puppeteer in server-safe mode
     const browser = await puppeteer.launch({

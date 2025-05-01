@@ -85,8 +85,8 @@
     <h1>Home Sample Collection Summary</h1>
     <p style="text-align: center; font-size: 12px; color: #777; padding: 1px; margin: 1px;">
       Generated on: 
-      <%= generatedAt.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }) %>, 
-      <%= generatedAt.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) %>
+      <%= generatedAt ? generatedAt.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' }) : "—" %>
+      <%= generatedAt ? generatedAt.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : "—" %>
     </p>
 
     <!-- GENERAL INFO -->
