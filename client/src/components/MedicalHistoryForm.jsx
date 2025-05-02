@@ -48,7 +48,7 @@ export const MedicalHistoryForm = ({ onSubmit }) => {
           label="Any history of surgeries in the past?"
           register={register}
           registerName="surgeryHistory"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]}
           error={errors?.surgeryHistory}
           defaultText="Please choose..."
@@ -66,7 +66,7 @@ export const MedicalHistoryForm = ({ onSubmit }) => {
           )
         }
 
-        <InputTag type={"text"} label="Blood Pressure" placeholder="Blood Pressure (Please mention the last known reading)" register={register} registerName="glucoseReadings" requiredStatus={true} error={errors?.glucoseReadings} />
+        <InputTag type={"text"} label="Blood Pressure" placeholder="Blood Pressure (Please mention the last known reading)" register={register} registerName="glucoseReadings" requiredStatus={false} error={errors?.glucoseReadings} />
 
         <div style={{ display: "flex", justifyContent: "space-around", placeItems: "center", gap: "1em", }}>
 

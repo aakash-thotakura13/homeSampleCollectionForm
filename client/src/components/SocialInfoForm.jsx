@@ -21,7 +21,7 @@ export const SocialInfoForm = ({ onSubmit, gender }) => {
           label={"Do you smoke?"}
           register={register}
           registerName="smoke"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "yes", label: "Yes" },
             { value: "no", label: "No" },
@@ -36,7 +36,7 @@ export const SocialInfoForm = ({ onSubmit, gender }) => {
           label="Do you accompany a smoker?"
           register={register}
           registerName="accompanySmoker"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "yes", label: "Yes" },
             { value: "no", label: "No" },
@@ -51,7 +51,7 @@ export const SocialInfoForm = ({ onSubmit, gender }) => {
           label="Do you consume alcohol?"
           register={register}
           registerName="drink"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "yes_daily", label: "Yes, Daily" },
             { value: "occasional", label: "Occasional" },
@@ -65,7 +65,7 @@ export const SocialInfoForm = ({ onSubmit, gender }) => {
           label="Do you chew tobacco?"
           register={register}
           registerName="tobacco"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "yes_daily", label: "Yes, Daily" },
             { value: "occasional", label: "Occasional" },
@@ -79,7 +79,7 @@ export const SocialInfoForm = ({ onSubmit, gender }) => {
           label="How do you classify your lifestyle?"
           register={register}
           registerName="classified"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "nocturnal", label: "Nocturnal (Active during Night)" },
             { value: "diurnal", label: "Diurnal (Active during Day)" },
@@ -94,7 +94,7 @@ export const SocialInfoForm = ({ onSubmit, gender }) => {
             label="Are you pregnant or breastfeeding?"
             register={register}
             registerName="pregnantOrBreastfeeding"
-            requiredStatus={true}
+            requiredStatus={false}
             options={[
               { value: "yes", label: "Yes" },
               { value: "no", label: "No" }]

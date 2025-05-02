@@ -38,7 +38,7 @@ export const PersonalMedicalHistory = ({ onSubmit }) => {
                 <SelectTag
                   register={register}
                   registerName="diabetesType"
-                  requiredStatus={true}
+                  requiredStatus={false}
                   defaultText={"Please select Type 1 or Type 2?"}
                   options={[
                     { value: "type1", label: "Type 1" },
@@ -51,7 +51,7 @@ export const PersonalMedicalHistory = ({ onSubmit }) => {
                   <SelectTag
                     register={register}
                     registerName="type1Meds"
-                    requiredStatus={true}
+                    requiredStatus={false}
                     defaultText={"Are you on medications?"}
                     options={[
                       { value: "yes", label: "Yes" },
@@ -65,7 +65,7 @@ export const PersonalMedicalHistory = ({ onSubmit }) => {
                   <SelectTag
                     register={register}
                     registerName="type2Insulin"
-                    requiredStatus={true}
+                    requiredStatus={false}
                     defaultText={"Are you currently on insulin?"}
                     options={[
                       { value: "yes", label: "Yes" },
@@ -84,7 +84,7 @@ export const PersonalMedicalHistory = ({ onSubmit }) => {
               <SelectTag
                 register={register}
                 registerName={"hypertensionMeds"}
-                requiredStatus={true}
+                requiredStatus={false}
                 defaultText={"Are you on medication for Hypertension?"}
                 options={[
                   { value: "yes", label: "Yes" },
@@ -104,7 +104,7 @@ export const PersonalMedicalHistory = ({ onSubmit }) => {
                 <SelectTag
                   register={register}
                   registerName={"thyroidType"}
-                  requiredStatus={true}
+                  requiredStatus={false}
                   defaultText={"Type of Thyroid Disorder"}
                   options={[
                     { value: "hypo", label: "Hypothyroidism" },
@@ -117,7 +117,7 @@ export const PersonalMedicalHistory = ({ onSubmit }) => {
                   <SelectTag
                     register={register}
                     registerName={"thyroidMeds"}
-                    requiredStatus={true}
+                    requiredStatus={false}
                     defaultText={"Are you on medication?"}
                     options={[
                       { value: "yes", label: "Yes" },

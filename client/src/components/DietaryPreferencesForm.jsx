@@ -29,7 +29,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           label={"Are you?"}
           register={register}
           registerName={"dietType"}
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "vegetarian", label: "Vegetarian" },
             { value: "nonVeg", label: "Non-Vegetarian (more than 2 days a week)" },
@@ -56,7 +56,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           label={"Do you tend to skip meals?"}
           register={register}
           registerName={"mealsSkipped"}
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "breakfast", label: "Breakfast" },
             { value: "lunch", label: "Lunch" },
@@ -70,7 +70,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
         {/* <SelectTag
           register={register}
           registerName={"compensatoryEater"}
-          requiredStatus={true}
+          requiredStatus={false}
           options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }, { value: "not_sure", label: "Not Sure" }]}
           error={errors?.compensatoryEater}
           defaultText={"Are you a compensatory eater?"}
@@ -80,7 +80,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           label={"Are you a TV-eater? PLEASE-SUGGEST?"}
           register={register}
           registerName={"tvEater"}
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "yes", label: "Yes" },
             { value: "no", label: "No" },
@@ -94,7 +94,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           label={"Gap between dinner and sleep?"}
           register={register}
           registerName={"dinnerSleepGap"}
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "1_2hrs", label: "1-2 hours" },
             { value: "below_1hr", label: "Below 1 hour" },
@@ -108,7 +108,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           label={"How often do you eat fruits?"}
           register={register}
           registerName="fruitFrequency"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "once", label: "Once a week" },
             { value: "twice", label: "Twice a week" },
@@ -123,7 +123,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           label={"How often do you eat green vegetables?"}
           register={register}
           registerName="greensFrequency"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "once", label: "Once a week" },
             { value: "twice", label: "Twice a week" },
@@ -138,7 +138,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           label={"Do you consume milk (products) thrice a week?"}
           register={register}
           registerName="milkFrequency"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "yes", label: "Yes" },
             { value: "no", label: "No" },
@@ -152,7 +152,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           label={"Do you consume carbonated drinks?"}
           register={register}
           registerName="carbonated"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "yes", label: "Yes" },
             { value: "no", label: "No" },
@@ -166,7 +166,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           label={"How often do you eat outside food per week?"}
           register={register}
           registerName="snackHabit"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "daily", label: "Daily" },
             { value: "more_than_5_times", label: "> 5 times" },
@@ -181,7 +181,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           label={"How much water do you consume per day?"}
           register={register}
           registerName="waterIntake"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "", label: "need options" },
             { value: "", label: "need options" },
@@ -212,7 +212,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
         {/* <SelectTag
           register={register}
           registerName="saltType"
-          requiredStatus={true}
+          requiredStatus={false}
           options={[
             { value: "pink_salt", label: "Pink Salt" },
             { value: "iodized_salt", label: "Iodized Salt" },
