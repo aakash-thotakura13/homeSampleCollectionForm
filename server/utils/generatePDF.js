@@ -1,5 +1,6 @@
-const chromium = require("chrome-aws-lambda");
-const puppeteer = require("puppeteer-core");
+// const chromium = require("chrome-aws-lambda");
+// const puppeteer = require("puppeteer-core");
+const puppeteer = require("puppeteer");
 const ejs = require("ejs");
 const path = require("path");
 const cloudinary = require("./cloudinary");
@@ -22,10 +23,10 @@ const generatePDF = async (formData, fileName) => {
     }
 
     const browser = await puppeteer.launch({
-      args: chromium.args,
-      executablePath,
-      defaultViewport: chromium.defaultViewport,
-      headless: chromium.headless,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      // executablePath,
+      // defaultViewport: chromium.defaultViewport,
+      headless: true,
     });
 
     const page = await browser.newPage();
