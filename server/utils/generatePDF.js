@@ -23,7 +23,7 @@ const generatePDF = async (formData, fileName) => {
       const stream = cloudinary.uploader.upload_stream(
         {
           resource_type: "raw",
-          public_id: `pdfs/${fileName}`,
+          public_id: `hsc_pdfs/${fileName}`,
         },
         (error, result) => {
           if (error) reject(error);

@@ -8,7 +8,7 @@ const submitForm = async (req, res) => {
     const newSubmission = new FormSubmission(req.body);
     await newSubmission.save();
 
-    const fileName = `submission_${newSubmission._id}`;
+    const fileName = `submission_${newSubmission._id}.pdf`;
     const pdfURL = await generatePDF(req.body, fileName);
 
     newSubmission.pdfUrl = pdfURL;
