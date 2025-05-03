@@ -66,13 +66,35 @@ export const MedicalHistoryForm = ({ onSubmit }) => {
           )
         }
 
-        <InputTag type={"text"} label="Blood Pressure" placeholder="Blood Pressure (Please mention the last known reading)" register={register} registerName="glucoseReadings" requiredStatus={false} error={errors?.glucoseReadings} />
+        <InputTag
+          type="text"
+          label="Blood Pressure"
+          placeholder="Blood Pressure (Please mention the last known reading)"
+          register={register}
+          registerName="glucoseReadings"
+          requiredStatus={false}
+          error={errors?.glucoseReadings}
+        />
 
         <div style={{ display: "flex", justifyContent: "space-around", placeItems: "center", gap: "1em", }}>
 
-          <InputTag type="number" placeholder="Pulse:" register={register} registerName="pulse" requiredStatus={false} error={errors?.pulse} />
+          <InputTag
+            type="number"
+            placeholder="Pulse:"
+            register={register}
+            registerName="pulse"
+            requiredStatus={false}
+            error={errors?.pulse}
+          />
 
-          <InputTag type="number" placeholder="SPO2:" register={register} registerName="spo2" requiredStatus={false} error={errors?.spo2} />
+          <InputTag
+            type="number"
+            placeholder="SPO2:"
+            register={register}
+            registerName="spo2"
+            requiredStatus={false}
+            error={errors?.spo2}
+          />
 
         </div>
 
@@ -80,9 +102,23 @@ export const MedicalHistoryForm = ({ onSubmit }) => {
 
           <span>
 
-            <InputTag type="number" step="any" placeholder="Height (cm):" register={register} registerName="height" requiredStatus={false} error={errors?.height} />
+            <InputTag
+              type="number"
+              placeholder="Height (cm):"
+              register={register}
+              registerName="height"
+              requiredStatus={false}
+              error={errors?.height}
+            />
 
-            <InputTag type="number" step="any" placeholder="Weight (kg):" register={register} registerName="weight" requiredStatus={false} error={errors?.weight} />
+            <InputTag
+              type="number"
+              placeholder="Weight (kg):"
+              register={register}
+              registerName="weight"
+              requiredStatus={false}
+              error={errors?.weight}
+            />
 
           </span>
 
@@ -104,9 +140,25 @@ export const MedicalHistoryForm = ({ onSubmit }) => {
 
           <span>
 
-            <InputTag type="number" step="any" placeholder="Hip Measurement (inch):" register={register} registerName="hip" requiredStatus={false} error={errors?.hip} />
+            <InputTag
+              type="number"
+              step="any"
+              placeholder="Hip Measurement (inch):"
+              register={register}
+              registerName="hip"
+              requiredStatus={false}
+              error={errors?.hip}
+            />
 
-            <InputTag type="number" step="any" placeholder="Waist Measurement (inch):" register={register} registerName="waist" requiredStatus={false} error={errors?.waist} />
+            <InputTag
+              type="number"
+              step="any"
+              placeholder="Waist Measurement (inch):"
+              register={register}
+              registerName="waist"
+              requiredStatus={false}
+              error={errors?.waist}
+            />
 
           </span>
 

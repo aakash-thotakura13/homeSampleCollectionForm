@@ -2,18 +2,6 @@
 import './App.css'
 import MultiStepForm from './components/MultiStepForm';
 
-// import { ComplaintsForm } from './components/ComplaintForm';
-
-// import { FamilyHistoryForm } from './components/FamilyHistoryForm';
-// import { DietaryPreferencesForm } from './components/DietaryPreferencesForm';
-// import { GeneralInfoForm } from './components/GeneralInfoForm';
-// import { LifestyleForm } from './components/LifestyleForm';
-// import { MedicalHistoryForm } from './components/MedicalHistoryForm';
-// import { SocialInfoForm } from './components/SocialInfoForm';
-// import { Confirmation } from './components/Confirmation';
-// import { PersonalMedicalHistory } from './components/PersonalMedicalHistoryForm';
-// import { TestNCollectionInfo } from './components/TestNCollectionInfo';
-// import { SelectTests } from './components/SelectTests';
 
 function App() {
 
@@ -55,18 +43,6 @@ function App() {
         </section>
 
       </footer>
-
-      {/* <GeneralInfoForm />
-      <SocialInfoForm />
-      <PersonalMedicalHistory />
-      <FamilyHistoryForm />
-      <ComplaintsForm /> This Page is still available, but is not required for the time being
-      <LifestyleForm />
-      <MedicalHistoryForm />
-      <DietaryPreferencesForm />
-      <TestNCollectionInfo />
-      <SelectTests />
-      <Confirmation /> */}
 
     </main>
 

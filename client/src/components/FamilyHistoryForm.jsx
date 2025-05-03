@@ -17,14 +17,6 @@ export const FamilyHistoryForm = ({ onSubmit }) => {
 
         <Heading title="Family History" />
 
-        {/* <SelectTag label="Is Diabetes running in your immediate family?" register={register} registerName="familyDiabetes" requiredStatus={false} options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }, { value: "maybe", label: "Maybe" }]} error={errors?.familyDiabetes} defaultText="Please choose..." />
-
-        <SelectTag label="Is Hypertension running in your immediate family?" register={register} registerName={"familyHypertension"} requiredStatus={false} options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }, { value: "maybe", label: "Maybe" }]} error={errors?.registerName} defaultText="Please choose..." />
-
-        <SelectTag label="Any history of Cardiac Arrests / Heart Attacks in your immediate family?" register={register} registerName={"familyCardiac"} requiredStatus={false} options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }, { value: "maybe", label: "Maybe" }]} error={errors?.familyCardiac} defaultText="Please choose..." />
-
-        <SelectTag label="Any history of brain stroke (Paralysis / Paresis) in your immediate family?" register={register} registerName={"familyStroke"} requiredStatus={false} options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }, { value: "maybe", label: "Maybe" }]} error={errors?.familyStroke} defaultText="Please choose..." /> */}
-
         <label>
           Are any of your immediate family affected by the following conditions?
 

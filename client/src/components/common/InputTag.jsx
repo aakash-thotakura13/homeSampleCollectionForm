@@ -11,7 +11,7 @@ export const InputTag = ({
   patternMessage,
   error,
 }) => {
-  
+
   return (
     <label>
       {label || ""}

@@ -32,7 +32,7 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           requiredStatus={false}
           options={[
             { value: "vegetarian", label: "Vegetarian" },
-            { value: "nonVeg", label: "Non-Vegetarian (more than 2 days a week)" },
+            { value: "nonVeg", label: "Non-Vegetarian" },
             { value: "vegan", label: "Vegan" },
             { value: "glutenFree", label: "Gluten Free" },
             { value: "lactoseFree", label: "Lactose Free" },
@@ -41,16 +41,6 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           error={errors?.dietType}
           defaultText={"Please choose..."}
         />
-
-        {/* <label>
-          Do you tend to skip meals?
-          <span style={{ fontSize: "0.7rem", color: "gray" }}>(You can select multiple)</span>
-          <div style={{ marginLeft: "0.5rem" }}>
-            <CheckBoxTag label={"Breakfast"} register={register} registerName={"mealsSkipped"} value={"breakfast"} />
-            <CheckBoxTag label={"Lunch"} register={register} registerName={"mealsSkipped"} value={"lunch"} />
-            <CheckBoxTag label={"Dinner"} register={register} registerName={"mealsSkipped"} value={"dinner"} />
-          </div>
-        </label> */}
 
         <SelectTag
           label={"Do you tend to skip meals?"}
@@ -66,15 +56,6 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           error={errors?.mealsSkipped}
           defaultText={"Please choose..."}
         />
-
-        {/* <SelectTag
-          register={register}
-          registerName={"compensatoryEater"}
-          requiredStatus={false}
-          options={[{ value: "yes", label: "Yes" }, { value: "no", label: "No" }, { value: "not_sure", label: "Not Sure" }]}
-          error={errors?.compensatoryEater}
-          defaultText={"Are you a compensatory eater?"}
-        /> */}
 
         <SelectTag
           label={"Are you a TV-eater? PLEASE-SUGGEST?"}
@@ -177,20 +158,6 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           defaultText="Please choose..."
         />
 
-        {/* <SelectTag
-          label={"How much water do you consume per day?"}
-          register={register}
-          registerName="waterIntake"
-          requiredStatus={false}
-          options={[
-            { value: "", label: "need options" },
-            { value: "", label: "need options" },
-            { value: "", label: "need options" },
-          ]}
-          error={errors?.waterIntake}
-          defaultText="Please choose..."
-        /> */}
-
         <label>
           How much water do you consume per day?
           <div className="slider-container" >
@@ -208,22 +175,6 @@ export const DietaryPreferencesForm = ({ onSubmit }) => {
           </div>
           <ErrorMsg err={errors?.waterIntake?.message} />
         </label>
-
-        {/* <SelectTag
-          register={register}
-          registerName="saltType"
-          requiredStatus={false}
-          options={[
-            { value: "pink_salt", label: "Pink Salt" },
-            { value: "iodized_salt", label: "Iodized Salt" },
-            { value: "kosher_salt", label: "Kosher Salt" },
-            { value: "rock_salt", label: "Rock Salt" },
-            { value: "sea_salt", label: "Sea Salt" },
-            { value: "black_salt", label: "Black Salt" },
-          ]}
-          error={errors?.saltType}
-          defaultText=" Type of Salt you use?"
-        /> */}
 
       </fieldset>
 
