@@ -1,11 +1,10 @@
-const puppeteer = require("puppeteer");
+const pdf = require("html-pdf-node");
 const ejs = require("ejs");
 const path = require("path");
 const cloudinary = require("./cloudinary");
 
 const generatePDF = async (formData, fileName) => {
   try {
-    // Render EJS template to HTML
     const html = await ejs.renderFile(
       path.join(__dirname, "../templates/pdfTemplate.ejs"),
       {
@@ -14,18 +13,10 @@ const generatePDF = async (formData, fileName) => {
       }
     );
 
-    // Launch puppeteer with server-safe flags
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
+    const options = { format: "A4" };
+    const file = { content: html };
 
-    const page = await browser.newPage();
-    await page.setContent(html, { waitUntil: "networkidle0" });
-
-    const pdfBuffer = await page.pdf({ format: "A4" });
-
-    await browser.close();
+    const pdfBuffer = await pdf.generatePdf(file, options);
 
     // Upload to Cloudinary
     const upload = await new Promise((resolve, reject) => {
@@ -44,7 +35,7 @@ const generatePDF = async (formData, fileName) => {
 
     return upload.secure_url;
   } catch (error) {
-    console.error("Error generating PDF:", error);
+    console.error("❌ Error generating PDF:", error);
     throw new Error("PDF generation failed");
   }
 };
