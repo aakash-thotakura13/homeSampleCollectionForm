@@ -9,7 +9,7 @@ export const Confirmation = ({ formData }) => {
   const BASE_URL = window.location.hostname === "localhost"
     ? "http://localhost:5000"
     : "https://homesamplecollectionform.onrender.com";
-    
+
   useEffect(() => {
     const submitFormAndGeneratePDF = async () => {
       setLoading(true);
@@ -66,7 +66,7 @@ export const Confirmation = ({ formData }) => {
 
       const result = await res.json();
 
-      if(res.ok) {
+      if (res.ok) {
         alert("Email sent successfully!");
       } else {
         alert("Failed to send email: " + result.message);
@@ -79,7 +79,24 @@ export const Confirmation = ({ formData }) => {
 
   };
 
-  if (loading) return <p style={{ textAlign: "center" }}>⏳ Generating your report... Please wait.</p>;
+  const downloadPDF = async () => {
+    try {
+      const response = await fetch(pdfURL);
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = blobUrl;
+      a.download = "Tricorder_Report.pdf"; // name the file as needed
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (err) {
+      console.error("❌ Failed to download PDF:", err);
+    }
+  };
+
+  if (loading) return <p style={{ textAlign: "center", }}><span className="icon-spinner">⏳</span> Generating your report... Please wait. <br />Do not close this page.</p>;
   if (error) return <p style={{ color: "red", textAlign: "center" }}>{error}</p>;
 
   return (
@@ -102,22 +119,25 @@ export const Confirmation = ({ formData }) => {
       }
 
       {pdfURL && (
-        <a
-          href={pdfURL}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "inline-block",
-            padding: "10px 20px",
-            backgroundColor: "#4CAF50",
-            color: "white",
-            textDecoration: "none",
-            borderRadius: "0.7em",
-            margin: "1rem 0",
-          }}
-        >
+        // <a
+        //   href={pdfURL}
+        //   target="_blank"
+        //   rel="noopener noreferrer"
+        //   style={{
+        //     display: "inline-block",
+        //     padding: "10px 20px",
+        //     backgroundColor: "#4CAF50",
+        //     color: "white",
+        //     textDecoration: "none",
+        //     borderRadius: "0.7em",
+        //     margin: "1rem 0",
+        //   }}
+        // >
+        //   📄 Download Your PDF
+        // </a>
+        <button onClick={downloadPDF}>
           📄 Download Your PDF
-        </a>
+        </button>
       )}
 
       <div style={{ marginTop: "1.5rem" }}>
