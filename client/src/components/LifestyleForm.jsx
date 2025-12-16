@@ -1,0 +1,102 @@
+
+// src/components/LifestyleForm.jsx
+import { useForm } from "react-hook-form";
+
+import { Heading } from "./common/Heading";
+import { SelectTag } from "./common/SelectTag";
+
+export const LifestyleForm = ({ onSubmit }) => {
+
+  const { register, handleSubmit, formState: { errors }, } = useForm();
+
+  const submitForm = data => onSubmit(data);
+
+  return (
+
+    <form onSubmit={handleSubmit(submitForm)}>
+
+      <fieldset>
+
+        <Heading title="Lifestyle" />
+
+        <SelectTag
+          label="How do you best describe your activity history?"
+          register={register}
+          registerName={"activity"}
+          requiredStatus={true}
+          defaultText="Please choose..."
+          options={[
+            { value: "sedentary", label: "Sedentary: Little or no exercise" },
+            { value: "one_to_three", label: "Exercise 1-3 times/week" },
+            { value: "four_to_five", label: "Exercise 4-5 times/week" },
+            { value: "daily_or_intense", label: "Daily / Intense Exercise 3-4 times/week" },
+            { value: "intense", label: "Intense Exercise 6-7 times/week" },
+            { value: "very_intense", label: "Very Intense Exercise Daily (Physical Job)" },
+          ]}
+          error={errors?.activity}
+        />
+
+        <SelectTag
+          label="Do you prefer to have an afternoon nap immediately after your lunch?"
+          register={register}
+          registerName={"afternoonNap"}
+          requiredStatus={true}
+          defaultText="Please choose..."
+          options={[
+            { value: "yes", label: "Yes" },
+            { value: "no", label: "No" },
+            { value: "sometimes", label: "Sometimes" },
+          ]}
+          error={errors?.afternoonNap}
+        />
+
+        <SelectTag
+          label="Has weight been a problem for you, anytime?"
+          register={register}
+          registerName={"weightIssues"}
+          requiredStatus={true}
+          defaultText="Please choose..."
+          options={[
+            { value: "gaining", label: "Gaining Weight" },
+            { value: "lossing", label: "Lossing Weight" },
+            { value: "none", label: "No Issue" },
+          ]}
+          error={errors?.weightIssues}
+        />
+
+        <SelectTag
+          label="How many hours do you sleep?"
+          register={register}
+          registerName={"sleepPattern"}
+          requiredStatus={true}
+          defaultText="Please choose..."
+          options={[
+            { value: "less_than_four", label: "Less than 4 hrs" },
+            { value: "four_to_six", label: "Around 4-6 hrs" },
+            { value: "more_than_six", label: "More than 6 hrs" },
+          ]}
+          error={errors?.sleepPattern}
+        />
+
+        <SelectTag
+          label={"How do you best describe your sleep pattern?"}
+          register={register}
+          registerName={"sleepQuality"}
+          requiredStatus={true}
+          defaultText="Please choose..."
+          options={[
+            { value: "good", label: "Good" },
+            { value: "disturbed", label: "Disturbed" },
+            { value: "inconsistent", label: "Inconsistent" },
+            { value: "not_sure", label: "I'm not sure" },
+          ]}
+          error={errors?.sleepQuality}
+        />
+
+      </fieldset>
+
+      <button type="submit">Save & Continue</button>
+
+    </form>
+  );
+};
